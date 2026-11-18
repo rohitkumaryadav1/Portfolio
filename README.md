@@ -6,7 +6,9 @@ A responsive Next.js portfolio with a private `/admin` content studio, Supabase 
 
 For the shortest account-connection checklist, start with [SETUP-NEXT.md](SETUP-NEXT.md). There is no default admin password; the owner creates it privately in Supabase Authentication and allowlists that user's UUID.
 
-Application code, migrations, reviewed content seed, and deployment instructions are provided. The GitHub remote is `https://github.com/rohitkumaryadav1/Portfolio.git`. Supabase project `soetxwrjrhztzloqtmpo` is connected locally through ignored `.env.local`. All four migrations were applied through the signed-in SQL Editor on 18 November 2026, and public signups are disabled. Do not rerun them or the seed on this database. Administrator creation/allowlisting and initial asset uploads still need completion; Vercel deployment is pending. Without environment configuration, the public page displays a setup message and `/admin` redirects to a setup-aware login page. Runtime portfolio content comes only from Supabase; there is no hardcoded data fallback.
+Live website: [https://rohit-kumar-yadav-portfolio.vercel.app](https://rohit-kumar-yadav-portfolio.vercel.app). Private administration: [https://rohit-kumar-yadav-portfolio.vercel.app/admin](https://rohit-kumar-yadav-portfolio.vercel.app/admin). Sign in with the owner's Supabase email and privately chosen password.
+
+GitHub `main` is connected to Vercel project `rohit-kumar-yadav-portfolio` under team `rohit-251a`. Supabase project `soetxwrjrhztzloqtmpo` hosts the content, Auth, and private storage. All four migrations were applied on 18 November 2026; do not rerun them or the seed. Public signups are disabled and the single owner account is allowlisted. The supplied portrait and phone-redacted resume were uploaded through the admin panel. Runtime content comes only from Supabase.
 
 ## 1. Install and run
 

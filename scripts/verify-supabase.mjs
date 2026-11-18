@@ -28,4 +28,4 @@ assert.equal(auth.response.status, 200);
 assert.equal(auth.body.disable_signup, true, 'Disable public signups in Authentication settings');
 assert.equal(auth.body.external.email, true, 'Keep email sign-in enabled');
 console.log('PASS anonymous role, private allowlist, disabled signups, email authentication');
-console.log('Admin login/CRUD and initial asset uploads require the owner-created Auth account.');
+console.log('Read-only checks complete. Authenticated browser checks are recorded in docs/verification.md.');

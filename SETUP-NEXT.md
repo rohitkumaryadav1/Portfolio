@@ -1,31 +1,25 @@
-# Finish connecting your portfolio
+# Your deployed portfolio
 
-Supabase project `soetxwrjrhztzloqtmpo` is connected to the local app. All four migrations, reviewed content, RLS, and private image/PDF buckets were applied on 18 November 2026. Public signups are disabled. Do not rerun the migrations or seed on this database. Actual local environment values are ignored by Git.
+Website: https://rohit-kumar-yadav-portfolio.vercel.app
 
-## Next: finish your administrator
+Private admin: https://rohit-kumar-yadav-portfolio.vercel.app/admin
 
-1. In the open Supabase Authentication → Users → Create new user form, enter your password privately for `rohitky9910@gmail.com`, leave Auto confirm checked, and create the user. Do not send the password in chat.
-2. Copy the resulting UUID. Through the trusted SQL Editor, allowlist that account:
+Sign in with `rohitky9910@gmail.com` and the password you created privately in Supabase. No password is stored in this repository.
 
-```sql
-insert into public.admin_users(user_id) values ('YOUR_AUTH_USER_UUID');
-```
+## Connected services
 
-Only this allowlisted account can administer the website. No default password or authentication bypass exists. Browser credential-entry rules require the owner to enter and submit the new password.
+- GitHub: https://github.com/rohitkumaryadav1/Portfolio, branch `main`.
+- Vercel: `rohit-251a/rohit-kumar-yadav-portfolio`; Next.js preset, repository root, Hobby plan.
+- Supabase: `soetxwrjrhztzloqtmpo`; all four migrations applied, RLS enabled, public signups disabled, one administrator allowlisted.
+- Initial portrait and public resume uploaded through the real admin UI. Their unique paths are stored in profile data, not source code.
+- Production environment has the Supabase URL, publishable key, and site URL. No database password or secret key is needed by the application.
 
-3. Upload `assets/initial/rohit-yellow-hoodie.webp` to `portfolio-media/initial/rohit-yellow-hoodie.webp` and `assets/initial/rohit-resume.pdf` to `portfolio-documents/initial/rohit-resume.pdf`. Both buckets stay private. Alternatively upload and save them through Admin → Profile after signing in. For automated Brave uploads, enable Allow access to file URLs under the ChatGPT extension's Details in `brave://extensions`.
-4. Visit http://127.0.0.1:3000/admin and sign in privately. Complete the connected CRUD/publication/image/PDF checklist in README.md.
+## Updating content
 
-## Connection verification
+Open `/admin`, sign in, edit content, and save. Published changes appear without redeployment. Use Profile to replace your photograph or resume. Use Projects for project notes, links, screenshots, featured/current-build selection, and publication. Log out when finished.
 
-```powershell
-node --env-file=.env.local scripts/verify-supabase.mjs
-```
+## Updating code
 
-This read-only check already passes for the real project. Authenticated CRUD and uploads still need owner login. SQL Editor migrations do not automatically populate CLI migration history; reconcile history before any future `supabase db push`.
+Read CHAT.md, make changes, run relevant checks, and push to `main`. Vercel builds changes automatically. Manage deployment and domain settings at https://vercel.com/rohit-251a/rohit-kumar-yadav-portfolio.
 
-## Finally: Vercel hosting
-
-Sign in at https://vercel.com/new, connect GitHub, and import `rohitkumaryadav1/Portfolio`. Set the three variables from `.env.example`, use your actual publishable key, set `NEXT_PUBLIC_SITE_URL` to the production HTTPS domain, and deploy with the Next.js preset. Then update Supabase's Auth site URL and verify production login/content/uploads. This provides the public website link; no local backend must remain running.
-
-Keep passwords, secret keys, environment files, generated workers, dependencies, and build output out of GitHub. The tracked portrait and phone-redacted resume are intentional public portfolio assets.
+Do not rerun the initial seed. SQL Editor migrations do not automatically populate CLI migration history; reconcile that history before any future `supabase db push`. Keep actual environment files and passwords out of GitHub. See README.md for a clean installation and recovery instructions.

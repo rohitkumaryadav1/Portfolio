@@ -55,3 +55,13 @@ All four checked-in migrations were applied to project `soetxwrjrhztzloqtmpo` th
 `node --env-file=.env.local scripts/verify-supabase.mjs` passes: seven content tables return only published rows (1 profile, 3 projects, 2 experiences, 34 skills, 1 education, 0 interests, 1 settings), anonymous `is_admin()` is false, and anonymous allowlist reads are denied. Local HTTP checks against the real project: homepage 200 with reviewed content, `/admin` 307 to login, unauthenticated project mutation 401. Nine regression tests pass.
 
 Outstanding: owner password entry/account creation, allowlisting, initial image/PDF uploads, and authenticated hosted CRUD/upload checks. Brave's extension rejected the initial file chooser upload because file-URL access is disabled; the owner received instructions. No upload success or complete admin verification is claimed.
+
+## Production deployment and authenticated verification
+
+Live URL: https://rohit-kumar-yadav-portfolio.vercel.app. Vercel initial deployment `dpl_5wiAo7jHF6swAmsAow2kvYuBvhnv` succeeded from GitHub commit 938b884. Owner-created email account is the sole allowlisted admin following explicit approval. Public signups remain disabled. Supabase Auth Site URL matches production.
+
+Authenticated login succeeded locally and on production. Uploaded the real supplied portrait and sanitized resume through app upload endpoints, saved profile, and verified published responses: WebP 200 (234404 bytes), PDF inline/download 200 (116484 bytes). The portrait rendered after scrolling into its lazy-load area. Projects: create draft, verify anonymous exclusion, edit and publish, observe live website, unpublish and verify public removal, delete test record. Experiences: create draft, observe it in production admin after refresh, edit/publish on production, verify public appearance, unpublish and verify public removal, delete. Final dashboard returns original 3 projects / 2 experiences / 34 skills. Temporary records are gone.
+
+Production HTTP: homepage 200, /admin anonymous redirect 307, project/upload/resume anonymous mutations 401, foreign-origin mutation 403, inline and downloadable resume 200, sitemap and robots 200. No horizontal overflow measured in the current browser viewport. Prior desktop/mobile visual checks apply to unchanged application code. Image replacement/removal RLS coverage remains database-tested rather than a repeated production browser cycle. Production screenshots: live-portfolio.jpg, live-footer.jpg, production-admin-overview.jpg, vercel-production-deployed.jpg.
+
+Production logout returned to /admin/login; the delivered admin tab is logged out.
