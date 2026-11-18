@@ -2,6 +2,8 @@
 
 ## Section separation and stronger mesh revision
 
+The production build and all nine tests pass for this revision. Initial implementation commit `4d175a8e5467a2ec347c1c6d38c1f4847c465ba9` was pushed to the owner-provided GitHub repository and verified against `origin/main`. No actual environment file or credential was included. Hosted Supabase and Vercel remain unconfigured.
+
 The resume navigation now has a bold boxed treatment. Experience, Projects, Skills, and Education have distinct sage/sand/blue/cream gradient surfaces and borders, with dedicated dark-mode colors. The mesh has stronger tidal displacement, cursor-centered ripples, and sparse floating points, with pause and reduced-motion behavior retained. Desktop and 375px mobile browser checks found no horizontal overflow; resume weight measured 700. The four main panels have distinct computed background gradients. Fixture-mode admin login now explicitly states that no account/password has been created; it exposes no login bypass.
 
 ## Interactive presentation and resume revision
