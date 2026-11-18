@@ -1,0 +1,23 @@
+{
+  "AI-Powered Resume Analyzer & Optimization Platform": {
+    "highlights": [
+      "Resume parsing and job-description matching",
+      "Skill-gap detection and LLM-assisted suggestions"
+    ]
+  },
+  "AI-Powered Job Discovery & Outreach Automation Platform": {
+    "highlights": [
+      "Job aggregation and skill-based relevance ranking",
+      "Personalized recruiter outreach generation"
+    ]
+  },
+  "Mail Trace Monitor": {
+    "currently_building": true,
+    "highlights": [
+      "Gmail extension with per-email tracking controls",
+      "FastAPI endpoints for open and click events",
+      "PostgreSQL event storage and analytics"
+    ],
+    "blog_content": "## Building Mail Trace Monitor\nMail Trace Monitor started with a practical question: how can an email sender get a clearer view of engagement? I am building a Chrome extension and a Python backend to explore email-open signals and tracked-link events. The project is still in progress.\n## Inside the Gmail workflow\nThe extension detects Gmail compose windows and adds a tracking control. Preferences are stored with Chrome Storage. The current implementation prepares a tracking record and inserts a small tracking pixel before the send action resumes.\n## From requests to events\nThe FastAPI backend serves the tracking pixel and records open events. It also creates tracked links, records click events, and redirects requests to the original destination. SQLAlchemy models organize email records, links, and events in PostgreSQL, while analytics endpoints summarize the recorded activity.\n## What I am learning\nThis build connects browser interfaces, API requests, and relational data. Working across those boundaries has been an opportunity to understand how a small browser interaction becomes a stored event and then an analytics response.\n## Still a work in progress\nI am continuing to develop the extension and backend together. Pixel requests are engagement signals, rather than proof that someone read an email; privacy features and image loading can affect them. These notes describe the current implementation, not a launched product."
+  }
+}
