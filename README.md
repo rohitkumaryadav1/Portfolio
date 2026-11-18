@@ -6,7 +6,7 @@ A responsive Next.js portfolio with a private `/admin` content studio, Supabase 
 
 For the shortest account-connection checklist, start with [SETUP-NEXT.md](SETUP-NEXT.md). There is no default admin password; the owner creates it privately in Supabase Authentication and allowlists that user's UUID.
 
-Application code, migrations, reviewed content seed, and deployment instructions are provided. The GitHub remote is `https://github.com/rohitkumaryadav1/Portfolio.git`. A Supabase project and Vercel deployment have **not** been connected. Without environment configuration, the public page displays a setup message and `/admin` redirects to a setup-aware login page. Runtime portfolio content comes only from Supabase; there is no hardcoded data fallback.
+Application code, migrations, reviewed content seed, and deployment instructions are provided. The GitHub remote is `https://github.com/rohitkumaryadav1/Portfolio.git`. Supabase project `soetxwrjrhztzloqtmpo` is connected locally through ignored `.env.local`. All four migrations were applied through the signed-in SQL Editor on 18 November 2026, and public signups are disabled. Do not rerun them or the seed on this database. Administrator creation/allowlisting and initial asset uploads still need completion; Vercel deployment is pending. Without environment configuration, the public page displays a setup message and `/admin` redirects to a setup-aware login page. Runtime portfolio content comes only from Supabase; there is no hardcoded data fallback.
 
 ## 1. Install and run
 
@@ -22,6 +22,8 @@ Open http://localhost:3000. Stop and restart the server after changing `.env.loc
 
 ## 2. Create Supabase from scratch
 
+The existing owner project has already completed the migration steps below. These instructions also document recovery on a new project. SQL Editor setup does not require installing the CLI or sharing a database password.
+
 1. Create an account at [Supabase](https://supabase.com/dashboard) and create a new project. Choose a region near your audience and keep the database password in your password manager.
 2. In the project's SQL Editor, run all migration files in filename order: `202611180001_schema.sql`, `202611180002_content.sql`, `202611180003_project_journal.sql`, and `202611180004_resume.sql`. Run each once on a fresh project. These create content tables, the administrator allowlist, policies, private media/documents buckets, initial content, project journal constraints, and resume storage. On an existing database, run only unapplied migrations; do not rerun the initial seed.
 3. Find the project URL and **publishable key** in project API settings. Put them in `.env.local`:
@@ -31,6 +33,14 @@ NEXT_PUBLIC_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=YOUR_PUBLISHABLE_KEY
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
+
+Check the configured hosted connection without writing data:
+
+```powershell
+node --env-file=.env.local scripts/verify-supabase.mjs
+```
+
+This checks published content reads, anonymous admin denial, private allowlist access, and disabled signups. It does not substitute for authenticated CRUD/upload testing.
 
 The publishable key is intended for public applications. Authorization comes from Auth and database policies. This application never needs a service-role key.
 

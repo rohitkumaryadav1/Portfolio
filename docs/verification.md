@@ -47,3 +47,11 @@ TypeScript check passes. Browser checks at 1280px and 375px confirm no horizonta
 - Create/push the GitHub repository and deploy to Vercel. Verify final production domain, environment variables, metadata, and access boundaries.
 
 Follow the numbered setup and verification steps in README.md. The owner-provided GitHub repository is configured as origin. Hosted Supabase and production deployment are still pending.
+
+## Hosted Supabase checkpoint — 18 November 2026
+
+All four checked-in migrations were applied to project `soetxwrjrhztzloqtmpo` through the owner's signed-in SQL Editor. No database password or secret key was used. Public signups were disabled; email authentication remains enabled. The real URL and supplied publishable key are configured only in ignored `.env.local`.
+
+`node --env-file=.env.local scripts/verify-supabase.mjs` passes: seven content tables return only published rows (1 profile, 3 projects, 2 experiences, 34 skills, 1 education, 0 interests, 1 settings), anonymous `is_admin()` is false, and anonymous allowlist reads are denied. Local HTTP checks against the real project: homepage 200 with reviewed content, `/admin` 307 to login, unauthenticated project mutation 401. Nine regression tests pass.
+
+Outstanding: owner password entry/account creation, allowlisting, initial image/PDF uploads, and authenticated hosted CRUD/upload checks. Brave's extension rejected the initial file chooser upload because file-URL access is disabled; the owner received instructions. No upload success or complete admin verification is claimed.
